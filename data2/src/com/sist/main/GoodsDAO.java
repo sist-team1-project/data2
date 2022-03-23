@@ -15,14 +15,15 @@ public class GoodsDAO {
         try {
             conn = db.getConnection(conn);
 
-            String sql = "INSERT INTO goods_1 VALUES (goods_id_seq_1.NEXTVAL,?,?,?,0,?,?,0,1,SYSDATE)";
+            String sql = "INSERT INTO goods_1 VALUES (goods_id_seq_1.NEXTVAL,?,?,?,?,0,?,?,10,0,1,SYSDATE)";
             ps = conn.prepareStatement(sql);
 
             ps.setString(1, vo.getC_id());
             ps.setString(2, vo.getG_name());
-            ps.setInt(3, vo.getG_price());
-            ps.setString(4, vo.getG_image());
-            ps.setString(5, vo.getG_detail());
+            ps.setString(3, vo.getG_brand());
+            ps.setInt(4, vo.getG_price());
+            ps.setString(5, vo.getG_image());
+            ps.setString(6, vo.getG_detail());
             
             ps.executeUpdate();
 

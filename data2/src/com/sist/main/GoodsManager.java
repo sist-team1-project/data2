@@ -18,8 +18,9 @@ public class GoodsManager {
             Elements link = cate.select("a");
             
             
-            for (int i = 1; i <= 12; i++) {
+            for (int i = 1; i <= 8; i++) {
                 
+                if (i==7) continue;
                 // 메인에서 대분류로 이동
                 String path = "https://www.campinglist.co.kr" + link.get(i).attr("href");
                 Document doc2 = Jsoup.connect(path).timeout(30000).get();
@@ -49,6 +50,9 @@ public class GoodsManager {
                         // 제품 이름
                         vo.setG_name(doc4.select("tr.product_name_css td").text());
                         
+                        // 제품 브랜드
+                        vo.setG_brand(doc4.select("tr.prd_brand_css td").text());
+                        
                         // 제품 가격
                         String gprice = doc4.select("tr.product_price_css td").text();
                         if (gprice.equals("매장 판매 전용") || gprice.equals("스마트스토어 구매")) break; // 매장 판매 전용이나 스마트스토어 구매 이면 가격이 없으므로 스킵
@@ -56,8 +60,13 @@ public class GoodsManager {
                         vo.setG_price(price);
                         
                         // 제품 이미지
-                        String image = doc4.select("div.thumb img").get(0).attr("src");
-                        image = image.substring(image.indexOf("//") + 2);
+                        Elements images = doc4.select("div.thumb img");
+                        String image = "";
+                        for (int h = 0; h < images.size(); h++) {
+                            String temp = doc4.select("div.thumb img").get(h).attr("src");
+                            image +=  temp.substring(temp.indexOf("//") + 2) + ";";
+                        }
+                        image = image.substring(0, image.lastIndexOf(";"));
                         vo.setG_image(image);
                         
                         // 제품 상세

@@ -19,8 +19,10 @@ public class CategoryManager {
             Elements link = cate.select("a");
             
             
-            for (int i = 1; i <= 12; i++) {
-
+            for (int i = 1; i <= 8; i++) {
+                
+                if (i==7) continue;
+                
                 // 메인에서 대분류 이름 넣기
                 System.out.println("----------대분류----------");
                 if (i < 10) vo.setC_id("00" + i);

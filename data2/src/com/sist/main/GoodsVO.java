@@ -7,10 +7,12 @@ public class GoodsVO {
     private int g_id;
     private String c_id;
     private String g_name;
+    private String g_brand;
     private int g_price;
     private int g_sale;
     private String g_image;
     private String g_detail;
+    private int g_stock;
     private int g_sold;
     private int g_status;
     private Date g_regdate;
@@ -37,6 +39,14 @@ public class GoodsVO {
 
     public void setG_name(String g_name) {
         this.g_name = g_name;
+    }
+
+    public String getG_brand() {
+        return g_brand;
+    }
+
+    public void setG_brand(String g_brand) {
+        this.g_brand = g_brand;
     }
 
     public int getG_price() {
@@ -69,6 +79,14 @@ public class GoodsVO {
 
     public void setG_detail(String g_detail) {
         this.g_detail = g_detail;
+    }
+
+    public int getG_stock() {
+        return g_stock;
+    }
+
+    public void setG_stock(int g_stock) {
+        this.g_stock = g_stock;
     }
 
     public int getG_sold() {
