@@ -64,7 +64,7 @@ public class GoodsManager {
                         String image = "";
                         for (int h = 0; h < images.size(); h++) {
                             String temp = doc4.select("div.thumb img").get(h).attr("src");
-                            image +=  temp.substring(temp.indexOf("//") + 2) + ";";
+                            image +=  "https://" + temp.substring(temp.indexOf("//") + 2) + ";";
                         }
                         image = image.substring(0, image.lastIndexOf(";"));
                         vo.setG_image(image);
@@ -81,7 +81,6 @@ public class GoodsManager {
                             }
                         }
                         vo.setG_detail(detail);
-                        
                         // 데이터 넣기
                         dao.goodsInsert(vo);
                     }

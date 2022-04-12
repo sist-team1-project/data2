@@ -15,7 +15,7 @@ public class GoodsDAO {
         try {
             conn = db.getConnection(conn);
 
-            String sql = "INSERT INTO goods_1 VALUES (goods_id_seq_1.NEXTVAL,?,?,?,?,0,?,?,10,0,1,SYSDATE)";
+            String sql = "INSERT INTO goods_1 VALUES (goods_id_seq_1.NEXTVAL,?,?,?,?,0,?,?,0,1,SYSDATE)";
             ps = conn.prepareStatement(sql);
 
             ps.setString(1, vo.getC_id());
